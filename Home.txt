@@ -1,0 +1,133 @@
+import pygame 
+import os 
+
+WIDTH, HEIGHT = 600, 600
+WIN = pygame.display.set_mode((WIDTH,HEIGHT))
+pygame.display.set_caption("Spot it")
+clock = pygame.time.Clock() 
+WHITE = (255, 255, 255)
+
+# ----------------------- ASSETS ------------------------- #
+
+# Backgrounds 
+background_1 = pygame.image.load(os.path.join('Assets', 'background-1.png')) # 600 x 600 
+background_2 = pygame.image.load(os.path.join('Assets', 'background-2.png')) # 600 x 600 
+background_3 = pygame.image.load(os.path.join('Assets', 'background-3.png')) # 600 x 600 
+background_4 = pygame.image.load(os.path.join('Assets', 'background-4.png')) # 600 x 600 
+BACKGROUND = background_1
+
+# Overlays 
+overlay_trans1 = pygame.image.load(os.path.join('Assets', 'overlay-trans1.png'))
+# overlay_trans2 = pygame.image.load(os.path.join('Assets', 'overlay.png'))
+
+# Question Cards
+question_1 = pygame.image.load(os.path.join('Assets', 'card-1.png')) 
+question_2 = pygame.image.load(os.path.join('Assets', 'card-2.png'))
+question_3 = pygame.image.load(os.path.join('Assets', 'card-3.png'))
+question_4 = pygame.image.load(os.path.join('Assets', 'card-4.png'))
+question_5 = pygame.image.load(os.path.join('Assets', 'card-5.png'))
+
+# Answer Cards (should be 4 since 5th question you have to click on oject)
+answer_1 = pygame.image.load(os.path.join('Assets', 'ans-1.png')) 
+answer_2 = pygame.image.load(os.path.join('Assets', 'ans-2.png')) 
+answer_3 = pygame.image.load(os.path.join('Assets', 'ans-3.png')) 
+answer_4 = pygame.image.load(os.path.join('Assets', 'ans-4.png')) 
+
+# Dialog bubbles 
+
+# Correct bubble
+correct_card = pygame.image.load(os.path.join('Assets', 'correct-card.png')) 
+
+# Incorrect bubble 
+incorrect_card = pygame.image.load(os.path.join('Assets', 'incorrect-card.png')) 
+
+# Complete screen
+
+# Clown 
+search_box = pygame.image.load(os.path.join('Assets', 'search-button.png'))
+
+
+# --------------------- BUTTON CLASS ---------------------- #
+
+class Button:
+    def __init__(self, image, position, callback):
+        self.image = image
+        self.rect = image.get_rect(topleft=position)
+        self.callback = callback
+ 
+    def on_click(self, event):
+        if event.button == 1:
+            if self.rect.collidepoint(event.pos):
+                self.callback(self)
+
+# ---------------------- FUNCTIONS ---------------------- #
+def draw_window(input):
+    if input == 1:
+        home_page()
+    elif input == 34:
+        pass
+    
+def home_page():
+    WIN.fill(WHITE)
+    BACKGROUND = background_1
+    WIN.blit((BACKGROUND), (0,0))
+    pygame.display.update()
+
+# Question 1
+def ques_1():
+    WIN.blit((overlay_trans1), (0,0))
+    WIN.blit((question_1), (0,0))
+    WIN.blit((answer_1), (0,0))
+
+# Question 2
+def ques_2():
+    WIN.blit((overlay_trans1), (0,0))
+    WIN.blit((question_2), (0,0))
+    WIN.blit((answer_2), (0,0))
+
+# Question 3
+def ques_3():
+    WIN.blit((overlay_trans1), (0,0))
+    WIN.blit((question_3), (0,0))
+    WIN.blit((answer_3), (0,0))
+
+# Question 4
+def ques_4():
+    WIN.blit((overlay_trans1), (0,0))
+    WIN.blit((question_4), (0,0))
+    WIN.blit((answer_4), (0,0))
+
+# Question 5
+def ques_5():
+    WIN.blit((overlay_trans1), (0,0))
+    WIN.blit((question_5), (0,0))
+    WIN.blit((search_box), (0,0))
+
+# End screen (when the mirror is clicked)
+def end_screen():
+    pass
+
+# ------------------------ MAIN -------------------------- # 
+
+def main():
+    run = True
+    while run:
+        for event in pygame.event.get(): 
+            if event.type == pygame.QUIT: 
+                run = False
+
+            keys = pygame.key.get_pressed()
+            if event.type == pygame.KEYDOWN:
+
+                # ROOM VER 1 ------------------------------- # 
+
+                if keys[pygame.K_0]: 
+                    home_page()
+
+
+        pass
+
+
+if __name__ == "__main__":
+
+    main()
