@@ -10,6 +10,7 @@ WHITE = (255, 255, 255)
 # ----------------------- ASSETS ------------------------- #
 
 # Backgrounds 
+mini_screen = pygame.image.load(os.path.join('Assets', 'bg-screen-button.png'))
 background_1 = pygame.image.load(os.path.join('Assets', 'background-1.png')) # 600 x 600 
 background_2 = pygame.image.load(os.path.join('Assets', 'background-2.png')) # 600 x 600 
 background_3 = pygame.image.load(os.path.join('Assets', 'background-3.png')) # 600 x 600 
@@ -78,6 +79,24 @@ def home_page():
     WIN.fill(WHITE)
     BACKGROUND = background_1
     WIN.blit((BACKGROUND), (0,0))
+    WIN.blit((directions_1), (0,0))
+    WIN.blit((mini_screen), (0,0))
+    pygame.display.update()
+
+def background_change1(): # tulip change color 
+    WIN.fill(WHITE)
+    BACKGROUND = background_3
+    WIN.blit((BACKGROUND), (0,0))
+    WIN.blit((directions_1), (0,0))
+    WIN.blit((mini_screen), (0,0))
+    pygame.display.update()
+
+def background_change2(): # window change color (time change) 
+    WIN.fill(WHITE)
+    BACKGROUND = background_4
+    WIN.blit((BACKGROUND), (0,0))
+    WIN.blit((directions_1), (0,0))
+    WIN.blit((mini_screen), (0,0))
     pygame.display.update()
 
 # Question 1
@@ -86,11 +105,15 @@ def ques_1():
     WIN.blit((question_1), (0,0))
     WIN.blit((answer_1), (0,0))
 
+    pygame.display.update()
+
 # Question 2
 def ques_2():
     WIN.blit((overlay_trans1), (0,0))
     WIN.blit((question_2), (0,0))
     WIN.blit((answer_2), (0,0))
+
+    pygame.display.update()
 
 # Question 3
 def ques_3():
@@ -98,11 +121,15 @@ def ques_3():
     WIN.blit((question_3), (0,0))
     WIN.blit((answer_3), (0,0))
 
+    pygame.display.update()
+
 # Question 4
 def ques_4():
     WIN.blit((overlay_trans1), (0,0))
     WIN.blit((question_4), (0,0))
     WIN.blit((answer_4), (0,0))
+
+    pygame.display.update()
 
 # Question 5
 def ques_5():
@@ -110,9 +137,23 @@ def ques_5():
     WIN.blit((question_5), (0,0))
     WIN.blit((search_box), (0,0))
 
+    pygame.display.update()
+
+# Correct card
+def correct_screen():
+    WIN.blit((correct_card), (0,0))
+    pygame.display.update()
+
+# Incorrect card
+def incorrect_screen():
+    WIN.blit((incorrect_card), (0,0))
+    pygame.display.update()
+
 # End screen (when the mirror is clicked)
 def end_screen():
     WIN.blit((end_page), (0,0))
+
+    pygame.display.update()
 
 # ------------------------ MAIN -------------------------- # 
 
@@ -128,11 +169,53 @@ def main():
 
                 # ROOM VER 1 ------------------------------- # 
 
-                if keys[pygame.K_0]: 
+                if keys[pygame.K_KP1]: 
                     home_page()
 
+                # ROOM VER 2 ------------------------------- # 
 
-        pass
+                # after the question 2 
+                if keys[pygame.K_KP2]:
+                    background_change1()
+
+                # ROOM VER 3 ------------------------------- # 
+
+                # time change outside
+                # should happen after 
+                if keys[pygame.K_KP3]:
+                    background_change2()
+
+                # QUESTIONS -------------------------------- # 
+
+                if keys[pygame.K_1]:
+                    ques_1()
+                
+                if keys[pygame.K_2]:
+                    ques_2()
+
+                if keys[pygame.K_3]:
+                    ques_3()
+
+                if keys[pygame.K_4]:
+                    ques_4()
+
+                if keys[pygame.K_5]:
+                    ques_5()
+
+                # GAME LOGIC ------------------------------- # 
+
+                # CORRECT
+                if keys[pygame.K_o]:
+                    correct_screen() 
+
+                # INCORRECT
+                if keys[pygame.K_i]:
+                    incorrect_screen()
+
+                # END SCREEN ------------------------------- # 
+
+                if keys[pygame.K_7]:
+                    end_screen()
 
 
 if __name__ == "__main__":
