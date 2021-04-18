@@ -5,7 +5,7 @@ WIDTH, HEIGHT = 600, 600
 WIN = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("Spot it")
 clock = pygame.time.Clock() 
-WHITE = (255, 255, 255)
+WHITE = (255, 255, 255) 
 
 # ----------------------- ASSETS ------------------------- #
 
@@ -18,7 +18,7 @@ BACKGROUND = background_1
 
 # Overlays 
 overlay_trans1 = pygame.image.load(os.path.join('Assets', 'overlay-trans1.png'))
-# overlay_trans2 = pygame.image.load(os.path.join('Assets', 'overlay.png'))
+overlay_trans2 = pygame.image.load(os.path.join('Assets', 'overlay1.png'))
 
 # Question Cards
 question_1 = pygame.image.load(os.path.join('Assets', 'card-1.png')) 
@@ -34,6 +34,7 @@ answer_3 = pygame.image.load(os.path.join('Assets', 'ans-3.png'))
 answer_4 = pygame.image.load(os.path.join('Assets', 'ans-4.png')) 
 
 # Dialog bubbles 
+directions_1 = pygame.image.load(os.path.join('Assets', 'directions-1.png'))  
 
 # Correct bubble
 correct_card = pygame.image.load(os.path.join('Assets', 'correct-card.png')) 
@@ -41,10 +42,16 @@ correct_card = pygame.image.load(os.path.join('Assets', 'correct-card.png'))
 # Incorrect bubble 
 incorrect_card = pygame.image.load(os.path.join('Assets', 'incorrect-card.png')) 
 
-# Complete screen
+# Stars
+star_1 = pygame.image.load(os.path.join('Assets', '1-star.png')) 
+star_2 = pygame.image.load(os.path.join('Assets', '2-stars.png')) 
+star_3 = pygame.image.load(os.path.join('Assets', '3-stars.png')) 
+star_4 = pygame.image.load(os.path.join('Assets', '4-stars.png')) 
+star_5 = pygame.image.load(os.path.join('Assets', '5-stars.png')) 
 
 # Clown 
 search_box = pygame.image.load(os.path.join('Assets', 'search-button.png'))
+end_page = pygame.image.load(os.path.join('Assets', 'end-screen.png'))
 
 
 # --------------------- BUTTON CLASS ---------------------- #
@@ -105,7 +112,7 @@ def ques_5():
 
 # End screen (when the mirror is clicked)
 def end_screen():
-    pass
+    WIN.blit((end_page), (0,0))
 
 # ------------------------ MAIN -------------------------- # 
 
